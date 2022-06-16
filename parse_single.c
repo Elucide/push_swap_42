@@ -14,15 +14,11 @@ int	tab_check(t_data *data)
 		while (j < data->len_a)
 		{
 			if (nb == data->a[j])
-			{
-				dprintf(1, "return 0\n");
 				return (0);
-			}
 			j++;
 		}
 		i++;
 	}
-	dprintf(1, "return 1\n");
 	return (1);
 }
 
@@ -73,7 +69,7 @@ int ft_parse(int ac, char **av, t_data *d)
 	i = 0;
 	if (ac == 2)
 	{
-		if (!try_arg(av[1], "1234567890\t\v\n\r\f "))
+		if (!try_arg(av[1], "-1234567890\t\v\n\r\f "))
 			return (0);
 		if (!ft_split_int(av[1], d))
 			return (0);
@@ -86,7 +82,7 @@ int ft_parse(int ac, char **av, t_data *d)
 		{
 			d->a[i] = ft_atoi(av[i + 1]);
 			d->len_a++;
-			if (!try_arg(av[i + 1], "1234567890\t\v\n\r\f "))
+			if (!try_arg(av[i + 1], "-1234567890\t\v\n\r\f "))
 				return (0);
 			i++;
 		}

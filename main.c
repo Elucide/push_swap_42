@@ -45,5 +45,7 @@ int main(int ac, char **av)
 		return (write(1, "parsing error\n", 14));
 //	ft_split_int("42 44 4 43454 43854", data);
 	print_stacks(&data);
+	push_b(&data);
+	print_stacks(&data);
 //	printf("%d\n", ft_atoi(av[ac - 1]));
 }
