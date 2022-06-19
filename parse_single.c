@@ -50,7 +50,6 @@ int	ft_strcheck(char *str, char c)
 int try_arg(char *arg, char *str)
 {
 	int	i;
-	int j;
 
 	i = 0;
 	while (arg[i])
