@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/19 21:40:23 by yschecro          #+#    #+#             */
+/*   Updated: 2022/07/05 17:46:27 by yschecro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	*stack_del_front(int *stack, int len)
@@ -44,7 +56,7 @@ int	*stack_add_back(int *stack, int len, int nb)
 	int	i;
 
 	i = 0;
-	new = malloc(sizeof(int) * len + 1);
+	new = malloc(sizeof(int) * (len + 1));
 	if (!new)
 		return (0);
 	while (i < len)
@@ -63,7 +75,7 @@ int	*stack_del_back(int *stack, int len)
 	int	i;
 
 	i = 0;
-	new = malloc(sizeof(int) * len + 1);
+	new = malloc(sizeof(int) * (len + 1));
 	if (!new)
 		return (0);
 	while (i < len - 1)

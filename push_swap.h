@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/19 21:39:34 by yschecro          #+#    #+#             */
+/*   Updated: 2022/07/05 18:36:08 by yschecro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -6,10 +18,14 @@ typedef struct s_data
 {
 	int	*a;
 	int	*b;
-	int	i;
+	int	*comp;
 	int	j;
 	int len_a;
 	int	len_b;
+	int	min;
+	int	max;
+	int	mid;
+	int	pivot;
 }	t_data;
 
 void	print_stacks(t_data *data);
@@ -35,3 +51,6 @@ int	*stack_del_front(int *stack, int len);
 int	*stack_add_front(int *stack, int len, int nb);
 int	*stack_del_back(int *stack, int len);
 int	*stack_add_back(int *stack, int len, int nb);
+int	ft_create_comp(t_data *data);
+int	sort_int_tab(int *stack, int len);
+int	ft_solve(t_data *data);

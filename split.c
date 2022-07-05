@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/19 21:40:05 by yschecro          #+#    #+#             */
+/*   Updated: 2022/07/05 17:37:30 by yschecro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	fill_a(int nb, t_data *data)
@@ -6,7 +18,7 @@ int	fill_a(int nb, t_data *data)
 	int	i;
 
 	i = 0;
-	new = malloc(sizeof(int) * data->len_a + 1);
+	new = malloc(sizeof(int) * (data->len_a + 1));
 	if (!new)
 		return (0);
 	while (i < data->len_a)
