@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:31:55 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/05 19:03:11 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:00:23 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	ft_data_init(t_data *data)
 	data->max = 0;
 	data->a = malloc(1);
 	data->b = malloc(1);
+	data->comp = NULL;
 	if (!data->a || !data->b)
 		return (0);
-	data->comp = NULL;
 	data->mid = 0;
 	data->pivot = 0;
 	return (1);
@@ -76,10 +76,25 @@ int main(int ac, char **av)
 		return (write(1, "parsing error\n", 14));
 	if (!data.len_a || !tab_check(&data))
 		return (write(1, "parsing error\n", 14));
+	if (!ft_create_comp(&data))
+		return (0);
+	data.min = data.comp[0];
+	data.max = data.comp[data.len_a];
 //	print_stacks(&data);
-	ft_solve(&data);	
-//	print_stacks(&data);
-//	free(data.a);
-//	free(data.b);
+	if (data.len_a >= 10)
+	{
+		if (!ft_quick_quick_sort(&data))
+			return (0);
+	}
+	no_sort(&data);
+//	while (data.len_b)
+//	{
+//		if (!push_a(&data))
+//			return (0);
+//	}
+	print_stacks(&data);
+	free(data.a);
+	free(data.b);
+	free(data.comp);
 	return (1);	
 }

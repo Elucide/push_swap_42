@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:40:23 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/05 17:46:27 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/06 15:49:09 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	*stack_del_front(int *stack, int len)
 	int	i;
 
 	i = 0;
-	new = malloc(sizeof(int) * (len - 1));
+	new = (int *)malloc(sizeof(int) * (len + 1));
 	if (!new)
 		return (0);
 	while (i < len)
@@ -26,7 +26,8 @@ int	*stack_del_front(int *stack, int len)
 		new[i] = stack[i + 1];
 		i++;
 	}
-	free(stack);
+	if (stack)
+		free(stack);
 	return (new);
 }
 
@@ -36,7 +37,7 @@ int	*stack_add_front(int *stack, int len, int nb)
 	int	i;
 
 	i = 1;
-	new = malloc(sizeof(int) * (len + 1));
+	new = (int *)malloc(sizeof(int) * (len + 1));
 	if (!new)
 		return (0);
 	new[0] = nb;
@@ -45,7 +46,8 @@ int	*stack_add_front(int *stack, int len, int nb)
 		new[i] = stack[i - 1];
 		i++;
 	}
-	free(stack);	
+	if (stack)
+		free(stack);	
 	return (new);
 }
 
@@ -56,7 +58,7 @@ int	*stack_add_back(int *stack, int len, int nb)
 	int	i;
 
 	i = 0;
-	new = malloc(sizeof(int) * (len + 1));
+	new = (int *)malloc(sizeof(int) * (len + 1));
 	if (!new)
 		return (0);
 	while (i < len)
@@ -65,7 +67,8 @@ int	*stack_add_back(int *stack, int len, int nb)
 		i++;
 	}
 	new[i] = nb;
-	free(stack);
+	if (stack)
+		free(stack);
 	return (new);
 }
 
@@ -75,7 +78,7 @@ int	*stack_del_back(int *stack, int len)
 	int	i;
 
 	i = 0;
-	new = malloc(sizeof(int) * (len + 1));
+	new = (int *)malloc(sizeof(int) * (len + 1));
 	if (!new)
 		return (0);
 	while (i < len - 1)
@@ -83,6 +86,7 @@ int	*stack_del_back(int *stack, int len)
 		new[i] = stack[i];
 		i++;
 	}
-	free(stack);
+	if (stack)
+		free(stack);
 	return (new);
 }

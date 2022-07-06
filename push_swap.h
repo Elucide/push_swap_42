@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:39:34 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/05 18:36:08 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:02:16 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,7 @@ int	*stack_del_back(int *stack, int len);
 int	*stack_add_back(int *stack, int len, int nb);
 int	ft_create_comp(t_data *data);
 int	sort_int_tab(int *stack, int len);
-int	ft_solve(t_data *data);
+int	ft_quick_quick_sort(t_data *data);
+int	get_pos(t_data *data, int nb);
+int	get_pos_b(t_data *data, int nb);
+int	no_sort(t_data *data);
