@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:31:55 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/06 16:00:23 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/06 17:17:00 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,16 @@ int main(int ac, char **av)
 		return (write(1, "parsing error\n", 14));
 	if (!data.len_a || !tab_check(&data))
 		return (write(1, "parsing error\n", 14));
-	if (!ft_create_comp(&data))
-		return (0);
-	data.min = data.comp[0];
-	data.max = data.comp[data.len_a];
-//	print_stacks(&data);
-	if (data.len_a >= 10)
-	{
+//	while (data.len_a >= 5)
+//	{
 		if (!ft_quick_quick_sort(&data))
 			return (0);
-	}
-	no_sort(&data);
-//	while (data.len_b)
-//	{
-//		if (!push_a(&data))
-//			return (0);
 //	}
+	while (data.len_a)
+		push_b(&data);
+	if (!ft_create_comp(&data, data.b, data.len_b))
+		return (0);
+	no_sort(&data);
 	print_stacks(&data);
 	free(data.a);
 	free(data.b);

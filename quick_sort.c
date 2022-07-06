@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:24:55 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/06 16:03:22 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/06 17:16:44 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,21 @@ int	sort_int_tab(int *stack, int len)
 	return (1);
 }
 
-int	ft_create_comp(t_data *data)
+int	ft_create_comp(t_data *data, int *stack, int len)
 {
 	int	i;
 
 	i = 0;
-	data->comp = malloc(sizeof(int) * (data->len_a + 1));
+	free(data->comp);
+	data->comp = malloc(sizeof(int) * (len + 1));
 	if (!data->comp)
 		return (0);
-	while (i < data->len_a)
+	while (i < len)
 	{
-		data->comp[i] = data->a[i];
+		data->comp[i] = stack[i];
 		i++;
 	}
-	sort_int_tab(data->comp, data->len_a);
+	sort_int_tab(data->comp, len);
 	return (1);
 }
 
@@ -67,12 +68,12 @@ int	first_step(t_data *data)
 	{
 		if (func == 1)
 		{
-			if (!rot_a(data))
+			if (!rrot_a(data))
 				return (0);
 		}
 		if (func == 2)
 		{
-			if (!rrot_a(data))
+			if (!rot_a(data))
 				return (0);
 		}
 	}
@@ -112,18 +113,23 @@ int	ft_quick_quick_sort(t_data *data)
 	int	save;
 
 	save = 0;
-	data->pivot = data->comp[data->len_a / 2];
 	dprintf(1, "pivot = %d\n", data->pivot);
-	if (!first_step(data) || !second_step(data) || ! rrot_b(data))
-		return (0);
+	while (data->len_a >= 5)
+	{
+		if (!ft_create_comp(data, data->a, data->len_a))
+			return (0);
+		data->pivot = data->comp[data->len_a / 2];
+		if (!first_step(data) || !second_step(data))
+			return (0);
+	}
 	save = data->len_a;
 	i = 0;
 	while (i < save)
 	{
 		push_b(data);
-//		rot_a(data);
+		//		rot_a(data);
 		i++;
 	}
-//	print_stacks(data);
+	//	print_stacks(data);
 	return (1);
 }
