@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:40:26 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/10 16:16:49 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:34:15 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_parse(int ac, char **av, t_data *d)
 			return (0);
 	}
 	else if (ac == 1)
-		return (write(1, "Error\n", 6), 0);
+		return (write(2, "Error\n", 6), 0);
 	else
 	{
 		while (i < ac - 1)

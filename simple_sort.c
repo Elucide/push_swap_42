@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:13:17 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/10 21:26:36 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:33:01 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,11 @@ int	ft_sort(t_data *data)
 	else if (data->len_a > 5 || data->len_a == 4)
 	{
 		if (!ft_quick_quick_sort(data))
-			return (free(data->a), free(data->b), write(1, "Error\n", 6));
+			return (free(data->a), free(data->b), write(2, "Error\n", 6));
 		while (data->len_a)
 			push_b(data);
 		if (!ft_create_comp(data, data->b, data->len_b))
-			return (free(data->a), free(data->b), write(1, "Error\n", 6));
+			return (free(data->a), free(data->b), write(2, "Error\n", 6));
 		no_sort(data);
 	}
 	else if (!swap_a(data))
