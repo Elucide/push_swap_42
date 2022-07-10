@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:40:23 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/06 15:49:09 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:28:58 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*stack_del_front(int *stack, int len)
 	new = (int *)malloc(sizeof(int) * (len + 1));
 	if (!new)
 		return (0);
-	while (i < len)
+	while (i < len - 1)
 	{
 		new[i] = stack[i + 1];
 		i++;
@@ -33,7 +33,7 @@ int	*stack_del_front(int *stack, int len)
 
 int	*stack_add_front(int *stack, int len, int nb)
 {
-	int *new;
+	int	*new;
 	int	i;
 
 	i = 1;
@@ -47,14 +47,13 @@ int	*stack_add_front(int *stack, int len, int nb)
 		i++;
 	}
 	if (stack)
-		free(stack);	
+		free(stack);
 	return (new);
 }
 
-
 int	*stack_add_back(int *stack, int len, int nb)
 {
-	int *new;
+	int	*new;
 	int	i;
 
 	i = 0;
@@ -74,7 +73,7 @@ int	*stack_add_back(int *stack, int len, int nb)
 
 int	*stack_del_back(int *stack, int len)
 {
-	int *new;
+	int	*new;
 	int	i;
 
 	i = 0;

@@ -1,42 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   no_sort.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 14:11:52 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/10 21:30:55 by yschecro         ###   ########.fr       */
+/*   Created: 2022/07/10 14:26:52 by yschecro          #+#    #+#             */
+/*   Updated: 2022/07/10 14:29:13 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	no_sort(t_data *data)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int	lol;
-	int	func;
+	size_t			i;
+	unsigned char	*ptr;
 
-	lol = data->len_b - 1;
-	while (data->len_b && lol)
+	ptr = (unsigned char *)b;
+	i = 0;
+	while (i < len)
 	{
-		func = get_pos_b(data, data->comp[lol]);
-		while (data->b[0] != data->comp[lol])
-		{
-			if (func == 1)
-			{
-				if (!rrot_b(data))
-					return (0);
-			}
-			else if (func == 2)
-				if (!rot_b(data))
-					return (0);
-		}
-		lol--;
-		if (!push_a(data))
-			return (0);
+		ptr[i] = (unsigned char)c;
+		i++;
 	}
-	if (!push_a(data))
-		return (0);
-	return (1);
+	return ((void *)ptr);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*out;
+
+	out = malloc(size * nmemb);
+	if (!out)
+		return (NULL);
+	ft_bzero(out, nmemb * size);
+	return (out);
 }

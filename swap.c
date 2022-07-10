@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:40:02 by yschecro          #+#    #+#             */
-/*   Updated: 2022/06/19 21:40:39 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:49:39 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	swap_a(t_data *data)
 		data->a[0] = data->a[1];
 		data->a[1] = temp;
 	}
-	return(write(1, "sa\n", 3));
+	return (write(1, "sa\n", 3));
 }
 
 int	swap_b(t_data *data)
@@ -35,7 +35,7 @@ int	swap_b(t_data *data)
 		data->b[0] = data->b[1];
 		data->b[1] = temp;
 	}
-	return(write(1, "sb\n", 3));
+	return (write(1, "sb\n", 3));
 }
 
 int	swap_s(t_data *data)
@@ -54,5 +54,5 @@ int	swap_s(t_data *data)
 		data->b[0] = data->b[1];
 		data->b[1] = temp;
 	}
-	return(write(1, "ss\n", 3));
+	return (write(1, "ss\n", 3));
 }

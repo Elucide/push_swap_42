@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:40:26 by yschecro          #+#    #+#             */
-/*   Updated: 2022/06/19 21:48:26 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/10 16:16:49 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
-
 	while (str[i])
 		i++;
 	return (i);
@@ -59,7 +58,7 @@ int	ft_strcheck(char *str, char c)
 	return (0);
 }
 
-int try_arg(char *arg, char *str)
+int	try_arg(char *arg, char *str)
 {
 	int	i;
 
@@ -73,7 +72,7 @@ int try_arg(char *arg, char *str)
 	return (1);
 }
 
-int ft_parse(int ac, char **av, t_data *d)
+int	ft_parse(int ac, char **av, t_data *d)
 {
 	int	i;
 
@@ -86,7 +85,7 @@ int ft_parse(int ac, char **av, t_data *d)
 			return (0);
 	}
 	else if (ac == 1)
-		return (write(1, "invalid arg\n", 12), 0);
+		return (write(1, "Error\n", 6), 0);
 	else
 	{
 		while (i < ac - 1)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/19 21:31:55 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/06 17:17:00 by yschecro         ###   ########.fr       */
+/*   Created: 2022/07/10 21:24:53 by yschecro          #+#    #+#             */
+/*   Updated: 2022/07/10 21:26:02 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,66 +29,44 @@ int	ft_data_init(t_data *data)
 	return (1);
 }
 
-void	print_stacks(t_data *data)
+int	is_sorted(t_data *data, int *stack, int len)
 {
 	int	i;
 
+	if (!ft_create_comp(data, stack, len))
+		return (1);
 	i = 0;
-	printf("\n----------------------------------------------------\n");
-	dprintf(1, "	pivot: %d\n", data->pivot);
-	dprintf(1, "	\n	stack A: ");
-	while (i < data->len_a)
+	while (i < len)
 	{
-		dprintf(1, "%d, ", data->a[i]);
+		if (stack[i] != data->comp[i])
+			return (0);
 		i++;
 	}
-	dprintf(1, "\n");
-	dprintf(1, "	stack B: ");
-	i = 0;
-	while (i < data->len_b)
-	{
-		dprintf(1, "%d, ", data->b[i]);
-		i++;
-	}
-	dprintf(1, "\n");
-	dprintf(1, "	stack comp: ");
-	if (data->comp)
-	{
-		i = 0;
-		while (i < data->len_a)
-		{
-			dprintf(1, "%d, ", data->comp[i]);
-			i++;
-		}
-	}
-	dprintf(1, "\n");
-	printf("----------------------------------------------------\n");
+	return (1);
 }
 
-int main(int ac, char **av)
+int	setup(int ac, char **av, t_data *data)
 {
+	if (!ft_data_init(data))
+		return (free(data->a), free(data->b), write(1, "Error\n", 6));
+	if (!ft_parse(ac, av, data))
+		return (free(data->a), free(data->b), write(1, "Error\n", 6));
+	if (!data->len_a)
+		return (free(data->a), free(data->b), 1);
+	if (!tab_check(data))
+		return (free(data->a), free(data->b), write(1, "Error\n", 6));
+	if (is_sorted(data, data->a, data->len_a))
+		return (free(data->a), free(data->comp), free(data->b), 1);
+	return (0);
+}
 
+int	main(int ac, char **av)
+{
 	t_data	data;
 
-	if (!ft_data_init(&data))
-		return (0);
-	if (!ft_parse(ac, av, &data))
-		return (write(1, "parsing error\n", 14));
-	if (!data.len_a || !tab_check(&data))
-		return (write(1, "parsing error\n", 14));
-//	while (data.len_a >= 5)
-//	{
-		if (!ft_quick_quick_sort(&data))
-			return (0);
-//	}
-	while (data.len_a)
-		push_b(&data);
-	if (!ft_create_comp(&data, data.b, data.len_b))
-		return (0);
-	no_sort(&data);
-	print_stacks(&data);
-	free(data.a);
-	free(data.b);
-	free(data.comp);
-	return (1);	
+	if (setup(ac, av, &data))
+		return (1);
+	if (ft_sort(&data))
+		return (free(data.a), free(data.b), free(data.comp), 1);
+	return (free(data.a), free(data.b), free(data.comp), 1);
 }

@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:24:55 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/06 17:16:44 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:24:29 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,66 +39,45 @@ int	sort_int_tab(int *stack, int len)
 	return (1);
 }
 
-int	ft_create_comp(t_data *data, int *stack, int len)
-{
-	int	i;
-
-	i = 0;
-	free(data->comp);
-	data->comp = malloc(sizeof(int) * (len + 1));
-	if (!data->comp)
-		return (0);
-	while (i < len)
-	{
-		data->comp[i] = stack[i];
-		i++;
-	}
-	sort_int_tab(data->comp, len);
-	return (1);
-}
-
 int	first_step(t_data *data)
 {
-	int	i;
 	int	func;
 
 	func = get_pos(data, data->pivot);
-	i = 0;
-	while (data->a[i] != data->pivot)
+	while (1)
 	{
+		if (data->a[0] != data->pivot)
+			break ;
 		if (func == 1)
 		{
 			if (!rrot_a(data))
 				return (0);
 		}
-		if (func == 2)
-		{
-			if (!rot_a(data))
-				return (0);
-		}
+		else if (!rot_a(data))
+			return (0);
 	}
 	if (!push_b(data))
 		return (0);
 	return (1);
 }
 
-int	second_step(t_data *data)
+int	second_step(t_data *d)
 {
 	int	i;
-	int lol;
+	int	lol;
 
 	i = 0;
-	lol = data->len_a;
+	lol = d->len_a;
 	while (i <= lol)
 	{
-		if (data->a[0] > data->pivot)
+		if (d->a[0] > d->pivot)
 		{
-			if (!push_b(data))
+			if (!push_b(d))
 				return (0);
 		}
 		else
 		{
-			if (!rot_a(data))
+			if (!rot_a(d))
 				return (0);
 		}
 		i++;
@@ -106,30 +85,41 @@ int	second_step(t_data *data)
 	return (1);
 }
 
-
-int	ft_quick_quick_sort(t_data *data)
-{
+int	third_step(t_data *data)
+{	
 	int	i;
 	int	save;
 
-	save = 0;
-	dprintf(1, "pivot = %d\n", data->pivot);
-	while (data->len_a >= 5)
-	{
-		if (!ft_create_comp(data, data->a, data->len_a))
-			return (0);
-		data->pivot = data->comp[data->len_a / 2];
-		if (!first_step(data) || !second_step(data))
-			return (0);
-	}
 	save = data->len_a;
 	i = 0;
 	while (i < save)
 	{
-		push_b(data);
-		//		rot_a(data);
+		if (!push_b(data))
+			return (0);
 		i++;
 	}
-	//	print_stacks(data);
+	return (1);
+}
+
+int	ft_quick_quick_sort(t_data *data)
+{
+	int	chunk;
+
+	if (data->len_a < 400)
+		chunk = 4;
+	else
+		chunk = 6;
+	while (data->len_a >= 5)
+	{
+		if (!ft_create_comp(data, data->a, data->len_a))
+			return (0);
+		data->pivot = data->comp[data->len_a - (data->len_a / chunk)];
+		if (!first_step(data))
+			return (0);
+		if (!second_step(data))
+			return (0);
+	}
+	if (!third_step(data))
+		return (0);
 	return (1);
 }
