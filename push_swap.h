@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:39:34 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/10 20:45:06 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:56:48 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -31,7 +31,7 @@ typedef struct s_data
 }	t_data;
 
 void	print_stacks(t_data *data);
-int		ft_atoi(char *str);
+long	ft_atoi(char *str);
 int		ft_split_int(char *str, t_data *data);
 int		fill_a(int nb, t_data *data);
 int		ft_parse(int ac, char **av, t_data *d);

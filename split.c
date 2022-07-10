@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:40:05 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/10 21:28:07 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/10 22:09:37 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	fill_a(int nb, t_data *data)
 
 int	ft_split_int(char *str, t_data *data)
 {
-	int	i;
-	int	n;
+	int		i;
+	long	n;
 
 	i = 0;
 	n = 0;
@@ -48,6 +48,8 @@ int	ft_split_int(char *str, t_data *data)
 		if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-')
 		{
 			n = ft_atoi(str + i);
+			if (n < -2147483648 || n > 2147483647)
+				return (0);
 			while ((str[i] >= '0' && str[i] <= '9') || str[i] == '-')
 				i++;
 		}
