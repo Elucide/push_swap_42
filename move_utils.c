@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:40:23 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/10 21:28:58 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/11 07:41:02 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	*stack_add_back(int *stack, int len, int nb)
 	int	i;
 
 	i = 0;
-	new = (int *)malloc(sizeof(int) * (len + 1));
+	new = (int *)malloc(sizeof(int) * (len + 2));
 	if (!new)
 		return (0);
 	while (i < len)

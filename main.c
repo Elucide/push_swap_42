@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 21:24:53 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/10 21:32:48 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/11 04:06:34 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	setup(int ac, char **av, t_data *data)
 	if (!ft_parse(ac, av, data))
 		return (free(data->a), free(data->b), write(2, "Error\n", 6));
 	if (!data->len_a)
-		return (free(data->a), free(data->b), 1);
+		return (free(data->a), free(data->b), write(2, "Error\n", 6));
 	if (!tab_check(data))
 		return (free(data->a), free(data->b), write(2, "Error\n", 6));
 	if (is_sorted(data, data->a, data->len_a))
@@ -64,6 +64,8 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
+	if (ac == 1)
+		return (1);
 	if (setup(ac, av, &data))
 		return (1);
 	if (ft_sort(&data))

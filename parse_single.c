@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 21:40:26 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/10 22:10:28 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/11 07:31:57 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	tab_check(t_data *data)
 	int	nb;
 
 	i = 0;
+	if (!data->len_a)
+		return (0);
 	while (i < data->len_a - 1)
 	{
 		j = i + 1;
@@ -61,14 +63,20 @@ int	ft_strcheck(char *str, char c)
 int	try_arg(char *arg, char *str)
 {
 	int	i;
+	int	nu;
 
+	nu = 0;
 	i = 0;
 	while (arg[i])
 	{
+		if (arg[i] >= '0' && arg[i] <= '9')
+			nu = 1;
 		if (!ft_strcheck(str, arg[i]))
 			return (0);
 		i++;
 	}
+	if (!nu)
+		return (0);
 	return (1);
 }
 

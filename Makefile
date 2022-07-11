@@ -25,10 +25,10 @@ all			:	$(NAME)
 $(CC)		:	gcc
 
 $(NAME)			:	$(OBJ)
-				$(CC) $(OBJ) -g3 -o $(NAME)
+				$(CC) $(OBJ) -o $(NAME)
 
 $(OBJ)		:
-				$(CC) -Wall -Wextra -Werror -MP -MMD -c $(SRCS)
+				$(CC) -Wall -Wextra -Werror -MP -MMD -g3 -c $(SRCS)
 
 clean		:
 				rm -f $(OBJ)

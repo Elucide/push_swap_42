@@ -6,7 +6,7 @@
 /*   By: yschecro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 21:20:50 by yschecro          #+#    #+#             */
-/*   Updated: 2022/07/10 21:24:42 by yschecro         ###   ########.fr       */
+/*   Updated: 2022/07/11 08:02:08 by yschecro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ int	ft_create_comp(t_data *data, int *stack, int len)
 	int	i;
 
 	i = 0;
+	if (len == 0)
+		return 0;
 	if (data->comp)
 		free(data->comp);
-	data->comp = (int *)malloc(sizeof(int) * (len));
+	data->comp = (int *)malloc(sizeof(int) * len);
 	if (!data->comp)
 		return (0);
 	while (i < len)
